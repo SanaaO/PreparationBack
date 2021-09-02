@@ -121,4 +121,13 @@ public class ProductController {
 
         return ResponseEntity.ok(categoryService.findByName(name));
     }
+
+    @DeleteMapping(value = "/delete")
+    public ResponseEntity delete(@RequestParam Long id) throws IOException {
+
+        Product product = productsService.getProduct(id);
+        Files.delete(Paths.get(product.getPicture()));
+        productsService.delete(id);
+        return ResponseEntity.ok("Product successfully deleted !");
+    }
 }
