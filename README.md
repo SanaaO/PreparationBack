@@ -14,7 +14,10 @@ Import "exportedDatabase.sql" file to set the project database.
 - Cart management
 - Command management
 - Payment
- 
+
+ # PS: 
+ # This is a personal private project for self-training purposes only
+ # This project is not complete yet and I still have some issues to fix and features to add
 
 
 
