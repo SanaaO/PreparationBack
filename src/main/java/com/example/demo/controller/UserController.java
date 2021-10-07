@@ -40,12 +40,10 @@ public class UserController {
 
         User newuser = new User(user.getUsername(), user.getPassword(),
                 user.getName(), user.getRole(), user.getBirthday());
-
         this.userService.createUser(newuser);
-
         //Autologin after register
         LoginRequest loginrequest = new LoginRequest(user.getUsername() , user.getPassword());
-        return ResponseEntity.ok(login(loginrequest));
+        return ResponseEntity.ok(this.login(loginrequest));
     }
 
     @PostMapping(value = "/login")
@@ -58,18 +56,20 @@ public class UserController {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
             );
-            System.out.println("auth : " + authentication);
+            //System.out.println("auth : " + authentication);
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
             // fetch the user details by the userdetailservice to create the token based
             // on it
             UserDetails userDetails = userService.loadUserByUsername(loginRequest.getUsername());
-            System.out.println("userDetails : " + userDetails);
+            //System.out.println("userDetails : " + userDetails);
 
             //get user principals to get user id
             User user = (User) authentication.getPrincipal();
             // generate jwt
             String token = tokenUtil.GenerateToken(userDetails);
+
+            //we will get userid, token and authorities as response
             response = new LoginResponse(user.getId(),token, authentication.getAuthorities());
 
         } catch (BadCredentialsException e) {

@@ -14,6 +14,7 @@ public class Product {
     private int instock ;
     //@Column( length = 1000)
     private String picture;
+    //many products could belong to one category and one category have many products
     @ManyToOne
     private Category category;
 

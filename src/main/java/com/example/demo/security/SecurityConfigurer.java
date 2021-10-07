@@ -24,7 +24,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
         return super.authenticationManager();
     }
 
-    private String[] authorized = {"/api/user/login", "/api/user/register","/api/products/**"};
+    private String[] authorized = {"/api/user/**","/api/products/**"};
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

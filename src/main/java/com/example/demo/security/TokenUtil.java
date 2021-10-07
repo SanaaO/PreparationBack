@@ -3,7 +3,6 @@ package com.example.demo.security;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -13,11 +12,6 @@ import java.util.Map;
 
 @Component
 public class TokenUtil {
-
-   /* @Value("${secret}")
-    private String TOKEN_SECRET;
-    @Value("${token.validity}")
-    private Long TOKEN_VALIDITY;*/
 
     private String TOKEN_SECRET = "Secret";
     private Long TOKEN_VALIDITY = 604800L;
