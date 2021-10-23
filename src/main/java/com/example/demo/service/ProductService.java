@@ -18,8 +18,8 @@ public class ProductService {
         return this.productRepository.save(product);
     }
 
-    public Product getProduct(Long id) {
-        return this.productRepository.getById(id);
+    public Product getProduct(Long id) throws Exception {
+        return this.productRepository.findById(id).orElseThrow(() -> new Exception("user not found "));
     }
 
     public List<Product> getAllProducts() {

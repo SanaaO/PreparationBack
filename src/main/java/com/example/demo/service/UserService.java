@@ -11,6 +11,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService implements UserDetailsService {
 
@@ -36,7 +38,18 @@ public class UserService implements UserDetailsService {
     }
 
     //to verify if the user already exists
-    public boolean existsByUsername (String email)
-    { return this.userRepository.existsByEmail(email);}
+    public boolean existsByUsername(String email) {
+        return this.userRepository.existsByEmail(email);
+    }
+
+
+    public User findById(Long id) throws Exception {
+        return this.userRepository.findById(id).orElseThrow(() -> new Exception("user not found "));
+    }
+
+
+    public User updateUser(User user) {
+        return this.userRepository.save(user);
+    }
 
 }

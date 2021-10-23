@@ -18,7 +18,6 @@ public class Category {
     @JsonIgnore
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @OneToMany( mappedBy = "category")
-
     private List<Product> products  = new ArrayList<>();
 
     public Category() {

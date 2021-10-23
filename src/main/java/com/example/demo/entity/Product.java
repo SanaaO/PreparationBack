@@ -1,6 +1,8 @@
 package com.example.demo.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Product {
@@ -17,6 +19,12 @@ public class Product {
     //many products could belong to one category and one category have many products
     @ManyToOne
     private Category category;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "WishList_Product",
+            joinColumns = { @JoinColumn(name = "prodid") },
+            inverseJoinColumns = { @JoinColumn(name = "idFav") })
+    private List<Favorites> wishLists = new ArrayList<>();
 
     public Product() {
     }
@@ -93,6 +101,13 @@ public class Product {
         this.category = category;
     }
 
+    public List<Favorites> getWishLists() {
+        return wishLists;
+    }
+
+    public void setWishLists(List<Favorites> wishLists) {
+        this.wishLists = wishLists;
+    }
 
     @Override
     public String toString() {

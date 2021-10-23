@@ -92,7 +92,7 @@ public class ProductController {
 
     //update selected product (id)
     @PutMapping(value = "/update", consumes = {"multipart/form-data"})
-    public ResponseEntity updateProduct(@RequestParam long id, @RequestPart Product productF, @RequestPart MultipartFile file) {
+    public ResponseEntity updateProduct(@RequestParam long id, @RequestPart Product productF, @RequestPart MultipartFile file) throws Exception {
 
         //fetch for product to update with the corresponding id
         Product productB = this.productsService.getProduct(id);
@@ -131,10 +131,21 @@ public class ProductController {
         return ResponseEntity.ok(this.productsService.updateProduct(productB));
     }
 
+    //get product by id
+    @GetMapping(value = "/getProduct")
+    public ResponseEntity getProduct(@RequestParam long id) throws Exception {
+
+        Product product = productsService.getProduct(id);
+        System.out.println(product);
+
+        //byte[] img = Files.readAllBytes(Paths.get(product.getPicture()));
+
+        return ResponseEntity.ok(product);
+    }
 
     //delete selected product(id)
     @DeleteMapping(value = "/delete")
-    public ResponseEntity delete(@RequestParam Long id) throws IOException {
+    public ResponseEntity delete(@RequestParam Long id) throws Exception {
 
         //fetch for product to delete with the corresponding id
         Product product = productsService.getProduct(id);

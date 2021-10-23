@@ -26,6 +26,9 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @OneToOne
+    private Favorites wishList ;
+
     public User() {
     }
 
@@ -87,6 +90,8 @@ public class User implements UserDetails {
         return authorities;
     }
 
+
+
     @Override
     public String getPassword() {
         return password;
@@ -115,5 +120,26 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public Favorites getWishList() {
+        return wishList;
+    }
+
+    public void setWishList(Favorites wishList) {
+        this.wishList = wishList;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", birthday=" + birthday +
+                ", role=" + role +
+                ", wishList=" + wishList +
+                '}';
     }
 }
