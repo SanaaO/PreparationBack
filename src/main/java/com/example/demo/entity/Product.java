@@ -13,18 +13,21 @@ public class Product {
     private String description;
     private String size;
     private double price;
-    private int instock ;
+    private int instock;
     //@Column( length = 1000)
     private String picture;
     //many products could belong to one category and one category have many products
     @ManyToOne
     private Category category;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "WishList_Product",
-            joinColumns = { @JoinColumn(name = "prodid") },
-            inverseJoinColumns = { @JoinColumn(name = "idFav") })
+    @ManyToMany
+    @JoinTable(name = "WishList_Product", joinColumns = {@JoinColumn(name = "prodid")}, inverseJoinColumns = {@JoinColumn(name = "idFav")})
     private List<Favorites> wishLists = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(name = "basket_Product", joinColumns = {@JoinColumn(name = "prodid")}, inverseJoinColumns = {@JoinColumn(name = "basketid")})
+    private List<Basket> baskets = new ArrayList<>();
+
 
     public Product() {
     }
@@ -107,6 +110,14 @@ public class Product {
 
     public void setWishLists(List<Favorites> wishLists) {
         this.wishLists = wishLists;
+    }
+
+    public List<Basket> getBaskets() {
+        return baskets;
+    }
+
+    public void setBaskets(List<Basket> baskets) {
+        this.baskets = baskets;
     }
 
     @Override

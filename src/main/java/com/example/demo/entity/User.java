@@ -29,6 +29,9 @@ public class User implements UserDetails {
     @OneToOne
     private Favorites wishList ;
 
+    @OneToOne
+    private Basket basket;
+
     public User() {
     }
 
@@ -128,6 +131,14 @@ public class User implements UserDetails {
 
     public void setWishList(Favorites wishList) {
         this.wishList = wishList;
+    }
+
+    public Basket getBasket() {
+        return basket;
+    }
+
+    public void setBasket(Basket basket) {
+        this.basket = basket;
     }
 
     @Override
