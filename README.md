@@ -8,5 +8,15 @@ Implement a 3D configurator tha allows to create, configure and manage 3D objetc
 -  Used [*Theree.js*](https://clarity.design/get-started/) JavaScript library for 3D visualization.
 
 ####  Done features
-– [x] Create 3D object and store it in database.–[x ] List all 3D objects stored in database.-[x]Select and Object and modify it's properties(geometry).
+- [x] Create 3D object and store it in database.–[x ] List all 3D objects stored in database.-[x]Select and Object and modify it's properties(geometry).
 -[x]Store updates in database. -[x] Select an object and visualize it's 3D render.-[x]Select an object and delete it from database.
+
+- [ ] Mercury
+- [x] Venus
+- [x] Earth (Orbit/Moon)
+- [x] Mars
+- [ ] Jupiter
+- [ ] Saturn
+- [ ] Uranus
+- [ ] Neptune
+- [ ] Comet Haley
