@@ -12,6 +12,5 @@ Implement a 3D configurator tha allows to create, configure and manage 3D objetc
 - [x] List all 3D objects stored in database.
 - [x] Select an Object and modify it's properties(geometry).
 - [x] Store updates in database. 
-- [x] Select and Object and modify it's properties(geometry).
-- [x] Store updates in database.
-- [x] Select an object and visualize it's 3D render.-[x]Select an object and delete it from database.
+- [x] Select an object and visualize it's 3D render.
+- [x] Select an object and delete it from database.
